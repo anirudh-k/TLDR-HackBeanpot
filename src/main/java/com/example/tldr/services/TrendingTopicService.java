@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 /**
  * Created by AnirudhKaushik on 2/9/19.
  */
@@ -19,8 +21,8 @@ public class TrendingTopicService {
   TrendingTopicRepository trendingTopicRepository;
 
   @GetMapping("/api/trendingtopics")
-  public Iterable<TrendingTopic> findAllTrendingTopics(){
-    return trendingTopicRepository.findAll();
+  public List<TrendingTopic> findAllTrendingTopics(){
+    return trendingTopicRepository.findAllTrendingTopics();
   }
 
   @GetMapping("/api/trendingtopics/{id}")

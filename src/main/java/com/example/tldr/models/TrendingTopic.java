@@ -4,11 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Created by AnirudhKaushik on 2/9/19.
  */
 @Entity
+@Table(name = "trendingtopic")
 public class TrendingTopic {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
