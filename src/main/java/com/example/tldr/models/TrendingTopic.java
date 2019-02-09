@@ -39,4 +39,13 @@ public class TrendingTopic {
   public void setTitle(String title) {
     this.title = title;
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj instanceof TrendingTopic) {
+      TrendingTopic trendingTopicObj = (TrendingTopic) obj;
+      return id == trendingTopicObj.id;
+    }
+    return false;
+  }
 }

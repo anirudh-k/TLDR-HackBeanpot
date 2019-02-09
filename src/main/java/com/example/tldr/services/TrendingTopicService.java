@@ -21,8 +21,8 @@ public class TrendingTopicService {
   TrendingTopicRepository trendingTopicRepository;
 
   @GetMapping("/api/trendingtopics")
-  public Iterable<TrendingTopic> findAllTrendingTopics(){
-    return trendingTopicRepository.findAll();
+  public List<TrendingTopic> findAllTrendingTopics(){
+    return trendingTopicRepository.findAllTrendingTopics();
   }
 
 //  @GetMapping("/api/trendingtopics/{id}")
@@ -31,9 +31,9 @@ public class TrendingTopicService {
 //    return trendingTopicRepository.findTrendingTopicById(id);
 //  }
 
-  @PostMapping("/api/trendingtopics")
-  public TrendingTopic createTrendingTopic(
-          @RequestBody TrendingTopic trendingTopic) {
-    return trendingTopicRepository.save(trendingTopic);
-  }
+//  @PostMapping("/api/trendingtopics")
+//  public TrendingTopic createTrendingTopic(
+//          @RequestBody TrendingTopic trendingTopic) {
+//    return trendingTopicRepository.save(trendingTopic);
+//  }
 }
