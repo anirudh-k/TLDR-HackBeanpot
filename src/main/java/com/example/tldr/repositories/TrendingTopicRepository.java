@@ -15,4 +15,6 @@ public interface TrendingTopicRepository
         extends CrudRepository<TrendingTopic, Integer> {
   @Query(value = "SELECT trendingtopic FROM TrendingTopic trendingtopic")
   public List<TrendingTopic> findAllTrendingTopics();
+  @Query(value = "SELECT trendingtopic FROM TrendingTopic trendingtopic WHERE trendingtopic.id=:id")
+  public TrendingTopic findTrendingTopicById(@Param("id") Integer id);
 }

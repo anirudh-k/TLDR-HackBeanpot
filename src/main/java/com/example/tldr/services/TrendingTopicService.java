@@ -25,11 +25,11 @@ public class TrendingTopicService {
     return trendingTopicRepository.findAllTrendingTopics();
   }
 
-//  @GetMapping("/api/trendingtopics/{id}")
-//  public TrendingTopic findTrendingTopicById(
-//          @PathVariable("id") Integer id) {
-//    return trendingTopicRepository.findTrendingTopicById(id);
-//  }
+  @GetMapping("/api/trendingtopics/{id}")
+  public TrendingTopic findTrendingTopicById(
+          @PathVariable("id") Integer id) {
+    return trendingTopicRepository.findTrendingTopicById(id);
+  }
 
 //  @PostMapping("/api/trendingtopics")
 //  public TrendingTopic createTrendingTopic(
