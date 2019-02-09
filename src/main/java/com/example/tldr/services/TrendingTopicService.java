@@ -1,39 +1,42 @@
 package com.example.tldr.services;
 
 import com.example.tldr.models.TrendingTopic;
+import com.example.tldr.repositories.TrendingTopicRepository;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by AnirudhKaushik on 2/9/19.
  */
 @RestController
 public class TrendingTopicService {
-  static List<TrendingTopic> trendingTopics = new ArrayList<>();
-  static {
-    trendingTopics.add(new TrendingTopic(0, "State of the Union"));
-    trendingTopics.add(new TrendingTopic(1, "Green New Deal"));
-    trendingTopics.add(new TrendingTopic(2, "Ariana Grande Album"));
-  }
+  @Autowired
+  TrendingTopicRepository trendingTopicRepository;
 
   @GetMapping("/api/trendingtopics")
-  public List<TrendingTopic> findAllTrendingTopics(){
-    return trendingTopics;
+  public Iterable<TrendingTopic> findAllTrendingTopics(){
+    return trendingTopicRepository.findAll();
   }
 
-  @GetMapping("api/trendingtopics/{id}")
+  @GetMapping("/api/trendingtopics/{id}")
   public TrendingTopic findTrendingTopicById(
           @PathVariable("id") Integer id) {
-    for (TrendingTopic topic : trendingTopics) {
+    for (TrendingTopic topic : trendingTopicRepository.findAll()) {
       if (topic.getId() == id) {
         return topic;
       }
     }
     return null;
+  }
+
+  @PostMapping("/api/trendingtopics")
+  public TrendingTopic createTrendingTopic(
+          @RequestBody TrendingTopic trendingTopic) {
+    return trendingTopicRepository.save(trendingTopic);
   }
 }

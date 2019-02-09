@@ -1,15 +1,23 @@
 package com.example.tldr.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 /**
  * Created by AnirudhKaushik on 2/9/19.
  */
+@Entity
 public class TrendingTopic {
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
-  private String topicTitle;
+  private String title;
 
-  public TrendingTopic(Integer id, String topicTitle) {
+  public TrendingTopic(Integer id, String title) {
     this.id = id;
-    this.topicTitle = topicTitle;
+    this.title = title;
   }
 
   public Integer getId() {
@@ -20,11 +28,11 @@ public class TrendingTopic {
     this.id = id;
   }
 
-  public String getTopicTitle() {
-    return topicTitle;
+  public String getTitle() {
+    return title;
   }
 
-  public void setTopicTitle(String topicTitle) {
-    this.topicTitle = topicTitle;
+  public void setTitle(String title) {
+    this.title = title;
   }
 }
