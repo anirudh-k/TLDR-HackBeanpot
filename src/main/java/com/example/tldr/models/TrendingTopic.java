@@ -43,8 +43,8 @@ public class TrendingTopic {
   @Override
   public boolean equals(Object obj) {
     if (obj instanceof TrendingTopic) {
-      TrendingTopic trendingTopicObj = (TrendingTopic) obj;
-      return id == trendingTopicObj.id;
+      TrendingTopic trendingTopic = (TrendingTopic) obj;
+      return id == trendingTopic.id;
     }
     return false;
   }
