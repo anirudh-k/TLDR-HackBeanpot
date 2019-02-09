@@ -16,12 +16,14 @@ public class TrendingTopic {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String title;
+  private String url;
 
   public TrendingTopic() {}
 
-  public TrendingTopic(Integer id, String title) {
+  public TrendingTopic(Integer id, String title, String url) {
     this.id = id;
     this.title = title;
+    this.url = url;
   }
 
   public Integer getId() {
@@ -38,6 +40,14 @@ public class TrendingTopic {
 
   public void setTitle(String title) {
     this.title = title;
+  }
+
+  public String getUrl() {
+    return url;
+  }
+
+  public void setUrl(String url) {
+    this.url = url;
   }
 
   @Override

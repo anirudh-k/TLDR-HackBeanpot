@@ -45,6 +45,7 @@ public class TrendingTopicService {
           @RequestBody TrendingTopic trendingTopicUpdates) {
     TrendingTopic trendingTopic = trendingTopicRepository.findTrendingTopicById(id);
     trendingTopic.setTitle(trendingTopicUpdates.getTitle());
+    trendingTopic.setUrl(trendingTopicUpdates.getUrl());
     return trendingTopicRepository.save(trendingTopic);
   }
 

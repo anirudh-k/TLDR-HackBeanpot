@@ -43,6 +43,7 @@ public class LoadTrendingTopicsApplication {
             new InputStreamReader(response, "UTF-8"));
     JSONArray articles = (JSONArray) jsonObject.get("articles");
 
+    deleteTrendingTopics();
     for (Object a : articles) {
       JSONObject aObj = (JSONObject) a;
       String source = (String) ((JSONObject) aObj.get("source")).get("name");
@@ -50,7 +51,6 @@ public class LoadTrendingTopicsApplication {
       String publishedAt = (String) aObj.get("publishedAt");
       String articleUrl = (String) aObj.get("url");
 
-      deleteTrendingTopics();
       postToDatabase(source, title, publishedAt, articleUrl);
     }
   }
@@ -66,18 +66,31 @@ public class LoadTrendingTopicsApplication {
   }
 
   private static void postToDatabase(String source, String title, String publishedAt, String url) throws IOException {
-    String postUrl = "http://tldr-hackbeanpot.herokuapp.com/api/articles";
+    String postArticlesUrl = "http://tldr-hackbeanpot.herokuapp.com/api/articles";
 
     HttpClient client = new DefaultHttpClient();
-    HttpPost request = new HttpPost(postUrl);
-    StringEntity params = new StringEntity("{\"source\":\"" + source + "\"," +
+    HttpPost requestArticles = new HttpPost(postArticlesUrl);
+    StringEntity articleParams = new StringEntity("{\"source\":\"" + source + "\"," +
             "\"title\":\"" + title + "\"," +
             "\"publishedAt\":\"" + publishedAt + "\"," +
-            "\"url\":\"" + url + "\"}", ContentType.APPLICATION_JSON);
-    request.setHeader("Content-Type", "application/json");
-    request.setEntity(params);
+            "\"url\":\"" + url + "\"}",
+            ContentType.APPLICATION_JSON);
+    requestArticles.setHeader("Content-Type", "application/json");
+    requestArticles.setEntity(articleParams);
+    HttpResponse response = client.execute(requestArticles);
+    System.out.println(response.getStatusLine().getStatusCode());
 
-    HttpResponse response = client.execute(request);
+
+    client = new DefaultHttpClient();
+    String postTrendingUrl = "http://tldr-hackbeanpot.herokuapp.com/api/trendingtopics";
+
+    HttpPost requestTrending = new HttpPost(postTrendingUrl);
+    StringEntity trendingParams = new StringEntity("{\"title\":\"" + title + "\"," +
+            "\"url\":\"" + url + "\"}",
+            ContentType.APPLICATION_JSON);
+    requestTrending.setHeader("Content-Type", "application/json");
+    requestTrending.setEntity(trendingParams);
+    response = client.execute(requestTrending);
     System.out.println(response.getStatusLine().getStatusCode());
   }
 }
