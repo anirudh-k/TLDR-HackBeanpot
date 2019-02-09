@@ -11,7 +11,8 @@ import java.util.List;
 /**
  * Created by AnirudhKaushik on 2/9/19.
  */
-public interface ArticleRepository extends CrudRepository<Article, Integer> {
+public interface ArticleRepository
+        extends CrudRepository<Article, Integer> {
   @Query(value = "SELECT article FROM Article article")
   public List<Article> findAllArticles();
   @Query(value = "SELECT article FROM Article article WHERE article.id=:id")

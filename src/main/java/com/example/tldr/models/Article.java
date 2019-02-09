@@ -1,5 +1,6 @@
 package com.example.tldr.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +18,7 @@ public class Article {
   private Integer id;
   private String source;
   private String title;
+  @Column(name = "published_at")
   private String publishedAt;
   private String url;
 
