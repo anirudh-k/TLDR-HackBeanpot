@@ -17,12 +17,12 @@ public class Article {
   private Integer id;
   private String source;
   private String title;
-  private Integer publishedAt;
+  private String publishedAt;
   private String url;
 
   public Article() {}
 
-  public Article(Integer id, String source, String title, Integer publishedAt, String url) {
+  public Article(Integer id, String source, String title, String publishedAt, String url) {
     this.id = id;
     this.source = source;
     this.title = title;
@@ -54,11 +54,11 @@ public class Article {
     this.title = title;
   }
 
-  public Integer getPublishedAt() {
+  public String getPublishedAt() {
     return publishedAt;
   }
 
-  public void setPublishedAt(Integer publishedAt) {
+  public void setPublishedAt(String publishedAt) {
     this.publishedAt = publishedAt;
   }
 
