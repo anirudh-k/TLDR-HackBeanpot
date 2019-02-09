@@ -23,7 +23,7 @@ public class TrendingTopicService {
   TrendingTopicRepository trendingTopicRepository;
 
   @GetMapping("/api/trendingtopics")
-  public List<TrendingTopic> findAllTrendingTopics(){
+  public List<TrendingTopic> findAllTrendingTopics() {
     return trendingTopicRepository.findAllTrendingTopics();
   }
 
@@ -52,5 +52,12 @@ public class TrendingTopicService {
   public void deleteTrendingTopic(
           @PathVariable("id") Integer id) {
     trendingTopicRepository.deleteById(id);
+  }
+
+  @DeleteMapping("/api/trendingtopics")
+  public void deleteAll() {
+    for (TrendingTopic topic : trendingTopicRepository.findAll()) {
+      trendingTopicRepository.deleteById(topic.getId());
+    }
   }
 }

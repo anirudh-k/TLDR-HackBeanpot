@@ -40,7 +40,7 @@ public class ArticleService {
   }
 
   @PutMapping("/api/articles/{id}")
-  public Article updateTrendingTopic(
+  public Article updateArticle(
           @PathVariable("id") Integer id,
           @RequestBody Article articleUpdates) {
     Article article = articleRepository.findArticleById(id);
@@ -52,7 +52,7 @@ public class ArticleService {
   }
 
   @DeleteMapping("/api/articles/{id}")
-  public void deleteTrendingTopic(
+  public void deleteArticle(
           @PathVariable("id") Integer id) {
     articleRepository.deleteById(id);
   }
