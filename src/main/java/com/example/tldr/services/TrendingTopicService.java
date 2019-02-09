@@ -31,9 +31,9 @@ public class TrendingTopicService {
     return trendingTopicRepository.findTrendingTopicById(id);
   }
 
-//  @PostMapping("/api/trendingtopics")
-//  public TrendingTopic createTrendingTopic(
-//          @RequestBody TrendingTopic trendingTopic) {
-//    return trendingTopicRepository.save(trendingTopic);
-//  }
+  @PostMapping("/api/trendingtopics")
+  public TrendingTopic createTrendingTopic(
+          @RequestBody TrendingTopic trendingTopic) {
+    return trendingTopicRepository.save(trendingTopic);
+  }
 }
