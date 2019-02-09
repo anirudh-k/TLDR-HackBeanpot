@@ -17,6 +17,8 @@ public class TrendingTopic {
   private Integer id;
   private String title;
 
+  public TrendingTopic() {}
+
   public TrendingTopic(Integer id, String title) {
     this.id = id;
     this.title = title;

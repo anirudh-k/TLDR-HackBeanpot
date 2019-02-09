@@ -21,20 +21,15 @@ public class TrendingTopicService {
   TrendingTopicRepository trendingTopicRepository;
 
   @GetMapping("/api/trendingtopics")
-  public List<TrendingTopic> findAllTrendingTopics(){
-    return trendingTopicRepository.findAllTrendingTopics();
+  public Iterable<TrendingTopic> findAllTrendingTopics(){
+    return trendingTopicRepository.findAll();
   }
 
-  @GetMapping("/api/trendingtopics/{id}")
-  public TrendingTopic findTrendingTopicById(
-          @PathVariable("id") Integer id) {
-    for (TrendingTopic topic : trendingTopicRepository.findAll()) {
-      if (topic.getId() == id) {
-        return topic;
-      }
-    }
-    return null;
-  }
+//  @GetMapping("/api/trendingtopics/{id}")
+//  public TrendingTopic findTrendingTopicById(
+//          @PathVariable("id") Integer id) {
+//    return trendingTopicRepository.findTrendingTopicById(id);
+//  }
 
   @PostMapping("/api/trendingtopics")
   public TrendingTopic createTrendingTopic(

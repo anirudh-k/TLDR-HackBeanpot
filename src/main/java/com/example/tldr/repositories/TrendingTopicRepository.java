@@ -4,6 +4,7 @@ import com.example.tldr.models.TrendingTopic;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -12,6 +13,10 @@ import java.util.List;
  */
 public interface TrendingTopicRepository
         extends CrudRepository<TrendingTopic, Integer> {
-  @Query(value = "SELECT trendingtopic FROM TrendingTopic trendingtopic")
-  public List<TrendingTopic> findAllTrendingTopics();
+//  @Query(value = "SELECT trendingtopic FROM TrendingTopic trendingtopic")
+//  public List<TrendingTopic> findAllTrendingTopics();
+//  @Query(value = "SELECT trendingtopic FROM TrendingTopic trendingtopic WHERE trendingtopic.id=:id")
+//  public TrendingTopic findTrendingTopicById(@Param("id") Integer id);
+//  @Query(value = "SELECT trendingtopic FROM TrendingTopic trendingtopic WHERE trendingtopic.title=:title")
+//  public List<TrendingTopic> findTrendingTopicsByTitle(@Param("title") String title);
 }
