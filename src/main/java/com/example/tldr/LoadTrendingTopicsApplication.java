@@ -34,9 +34,6 @@ public class LoadTrendingTopicsApplication {
             URLEncoder.encode(country, charset),
             URLEncoder.encode(apikey, charset));
 
-//    URLConnection connection = new URL(url + "?" + query).openConnection();
-//    connection.setRequestProperty("Accept-Charset", charset);
-//    InputStream response = connection.getInputStream();
     InputStream response = new URL(url + "?" + query).openStream();
     JSONParser parser = new JSONParser();
     JSONObject jsonObject = (JSONObject) parser.parse(
