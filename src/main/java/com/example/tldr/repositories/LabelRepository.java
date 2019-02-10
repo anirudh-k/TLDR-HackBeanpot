@@ -16,5 +16,7 @@ public interface LabelRepository
   @Query(value = "SELECT label FROM Label label")
   public List<Label> findAllLabels();
   @Query(value = "SELECT label FROM Label label WHERE label.id=:id")
-  public Label findLabelById(@Param("id") Integer id);
+  public List<Label> findLabelsById(@Param("id") Integer id);
+  @Query(value = "SELECT label FROM Label label WHERE label.category=:category")
+  public List<Label> findLabelByCategory(@Param("category") String category);
 }

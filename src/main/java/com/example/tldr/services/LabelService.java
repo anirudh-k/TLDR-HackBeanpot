@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,28 +27,14 @@ public class LabelService {
   }
 
   @GetMapping("/api/labels/{id}")
-  public Label findLabelById(
+  public List<Label> findLabelById(
           @PathVariable("id") Integer id) {
-    return labelRepository.findLabelById(id);
+    return labelRepository.findLabelsById(id);
   }
 
   @PostMapping("/api/labels")
   public Label createLabel(
           @RequestBody Label label) {
-    return labelRepository.save(label);
-  }
-
-  @PutMapping("/api/labels/{id}")
-  public Label updateLabel(
-          @PathVariable("id") Integer id,
-          @RequestBody Label labelUpdates) {
-    Label label = labelRepository.findLabelById(id);
-    label.setCategory(labelUpdates.getCategory());
-    label.setKeyword1(labelUpdates.getKeyword1());
-    label.setKeyword2(labelUpdates.getKeyword2());
-    label.setKeyword3(labelUpdates.getKeyword3());
-    label.setKeyword4(labelUpdates.getKeyword4());
-    label.setKeyword5(labelUpdates.getKeyword5());
     return labelRepository.save(label);
   }
 

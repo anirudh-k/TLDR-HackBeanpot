@@ -17,4 +17,6 @@ public interface ArticleRepository
   public List<Article> findAllArticles();
   @Query(value = "SELECT article FROM Article article WHERE article.id=:id")
   public Article findArticleById(@Param("id") Integer id);
+  @Query(value = "SELECT article FROM Article article") // TODO: change!!
+  public List<Article> findRelatedArticles(@Param("id") Integer id);
 }

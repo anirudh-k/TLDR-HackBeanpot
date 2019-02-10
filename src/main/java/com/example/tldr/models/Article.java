@@ -20,16 +20,17 @@ public class Article {
   private String title;
   @Column(name = "published_at")
   private String publishedAt;
-  private String url;
+  @Column(columnDefinition = "TEXT")
+  private String body;
 
   public Article() {}
 
-  public Article(Integer id, String source, String title, String publishedAt, String url) {
+  public Article(Integer id, String source, String title, String publishedAt, String body) {
     this.id = id;
     this.source = source;
     this.title = title;
     this.publishedAt = publishedAt;
-    this.url = url;
+    this.body = body;
   }
 
   public Integer getId() {
@@ -64,12 +65,12 @@ public class Article {
     this.publishedAt = publishedAt;
   }
 
-  public String getUrl() {
-    return url;
+  public String getBody() {
+    return body;
   }
 
-  public void setUrl(String url) {
-    this.url = url;
+  public void setBody(String body) {
+    this.body = body;
   }
 
   @Override

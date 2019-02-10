@@ -1,8 +1,10 @@
 package com.example.tldr.services;
 
+import com.example.tldr.LoadTrendingTopicsApplication;
 import com.example.tldr.models.TrendingTopic;
 import com.example.tldr.repositories.TrendingTopicRepository;
 
+import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -23,7 +26,12 @@ public class TrendingTopicService {
   TrendingTopicRepository trendingTopicRepository;
 
   @GetMapping("/api/trendingtopics")
-  public List<TrendingTopic> findAllTrendingTopics() {
+  public List<TrendingTopic> findAllTrendingTopics() throws IOException, ParseException {
+    List<TrendingTopic> trendingTopics = trendingTopicRepository.findAllTrendingTopics();
+    if (trendingTopics.size() > 0) {
+      return trendingTopicRepository.findAllTrendingTopics();
+    }
+    LoadTrendingTopicsApplication.main(new String[0]);
     return trendingTopicRepository.findAllTrendingTopics();
   }
 
@@ -45,7 +53,7 @@ public class TrendingTopicService {
           @RequestBody TrendingTopic trendingTopicUpdates) {
     TrendingTopic trendingTopic = trendingTopicRepository.findTrendingTopicById(id);
     trendingTopic.setTitle(trendingTopicUpdates.getTitle());
-    trendingTopic.setUrl(trendingTopicUpdates.getUrl());
+    trendingTopic.setSummary(trendingTopicUpdates.getSummary());
     return trendingTopicRepository.save(trendingTopic);
   }
 

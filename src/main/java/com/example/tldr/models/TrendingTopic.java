@@ -1,5 +1,6 @@
 package com.example.tldr.models;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,14 +17,15 @@ public class TrendingTopic {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Integer id;
   private String title;
-  private String url;
+  @Column(columnDefinition = "TEXT")
+  private String summary;
 
   public TrendingTopic() {}
 
-  public TrendingTopic(Integer id, String title, String url) {
+  public TrendingTopic(Integer id, String title, String summary) {
     this.id = id;
     this.title = title;
-    this.url = url;
+    this.summary = summary;
   }
 
   public Integer getId() {
@@ -42,12 +44,12 @@ public class TrendingTopic {
     this.title = title;
   }
 
-  public String getUrl() {
-    return url;
+  public String getSummary() {
+    return summary;
   }
 
-  public void setUrl(String url) {
-    this.url = url;
+  public void setSummary(String summary) {
+    this.summary = summary;
   }
 
   @Override
