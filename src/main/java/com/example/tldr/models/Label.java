@@ -1,9 +1,8 @@
 package com.example.tldr.models;
 
-import java.util.List;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -12,6 +11,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "label")
 public class Label {
+  @Id
   @Column(name = "article_id")
   Integer articleId;
   String category;
@@ -87,17 +87,5 @@ public class Label {
 
   public void setKeyword5(String keyword5) {
     this.keyword5 = keyword5;
-  }
-
-  public void setKeywords(List<String> keywords) {
-    if (keywords.size() != 5) {
-      throw new IllegalArgumentException("Keywords must have exactly 5 elements");
-    } else {
-      keyword1 = keywords.get(1);
-      keyword2 = keywords.get(2);
-      keyword3 = keywords.get(3);
-      keyword4 = keywords.get(4);
-      keyword5 = keywords.get(5);
-    }
   }
 }

@@ -1,9 +1,7 @@
 package com.example.tldr.services;
 
 import com.example.tldr.models.Label;
-import com.example.tldr.models.TrendingTopic;
 import com.example.tldr.repositories.LabelRepository;
-import com.example.tldr.repositories.TrendingTopicRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
